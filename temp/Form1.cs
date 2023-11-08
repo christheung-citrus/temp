@@ -17,14 +17,16 @@ namespace temp
             InitializeComponent();
         }
 
+        //varible declarations
+        int userNum;
+        int rowsToDraw, starsToDraw;
+        int spacesToDraw, spacesBefore, spacesInside, spacesDrawn, starsDrawn;
+        int row;
+
         //a hexagon is a reduced square, and as such will be the same dimensions vertically and horizontally
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //varible declarations
-            int userNum;
-            int rowsToDraw, starsToDraw;
-            int spacesToDraw, spacesBefore, spacesInside, spacesDrawn, starsDrawn;
-            int row;
+
 
             //get user input
             userNum = Convert.ToInt32(txtInput.Text);
