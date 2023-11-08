@@ -45,7 +45,7 @@ namespace temp
             {
                 if (row == 0)
                 {
-                    DrawSpaces(ref output);
+                    DrawSpaces(ref output, spacesBefore);
                     DrawStars(ref output);
 
                     spacesBefore--;
@@ -56,7 +56,7 @@ namespace temp
                 {
                     output = output + Environment.NewLine;
 
-                    DrawSpaces(ref output);
+                    DrawSpaces(ref output, spacesBefore);
 
                     output = output + "*";
 
@@ -101,13 +101,12 @@ namespace temp
 
                     output = output + Environment.NewLine;
                     
-                    DrawSpaces(ref output);
+                    DrawSpaces(ref output, spacesBefore);
 
                     output = output + "*";
 
                     spacesDrawn = 0;
                     spacesToDraw = spacesInside;
-
                     while (spacesDrawn < spacesToDraw)
                     {
                         output = output + " ";
@@ -124,7 +123,7 @@ namespace temp
                     output = output + Environment.NewLine;
                     spacesBefore = userNum - 1;
                     
-                    DrawSpaces(ref output);
+                    DrawSpaces(ref output, spacesBefore);
                     DrawStars(ref output);
 
                     row++;
@@ -135,10 +134,10 @@ namespace temp
 
         }
 
-        private void DrawSpaces(ref string output)
+        private void DrawSpaces(ref string output, int outerOrInner)
         {
             spacesDrawn = 0;
-            spacesToDraw = spacesBefore;
+            spacesToDraw = outerOrInner;
             while (spacesDrawn < spacesToDraw)
             {
                 output = output + " ";
