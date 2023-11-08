@@ -17,7 +17,7 @@ namespace temp
             InitializeComponent();
         }
 
-        //varible declarations
+        //global varible declarations
         int userNum;
         int rowsToDraw, starsToDraw;
         int spacesToDraw, spacesBefore, spacesInside, spacesDrawn, starsDrawn;
@@ -37,8 +37,10 @@ namespace temp
             //height
             rowsToDraw = (userNum * 3) - 2;
 
-            //extra variables we somehow need
+            //initalize output string as blank
             string output = "";
+
+            //initalize row to 0
             row = 0;
 
             while (row < rowsToDraw)
@@ -55,19 +57,16 @@ namespace temp
                     row++;
                 }
                 
-                //affects rows immediately precedeing center of hexagon, but not the first row
+                //affects rows immediately precedeing center of hexagon, but NOT the first row
                 else if (row < userNum - 1)
                 {
                     output = output + Environment.NewLine;
-
                     DrawSpaces(ref output, spacesBefore);
-
-                    output = output + "*";
-
+                    DrawBorder(ref output);
                     DrawSpaces(ref output, spacesInside);
+                    DrawBorder(ref output);
 
                     //modify values to get ready for drawing next rows
-                    output = output + "*";
                     spacesBefore--;
                     spacesInside += 2;
                     row++;
@@ -77,17 +76,16 @@ namespace temp
                 else if (row < (2 * userNum) - 1)
                 {
                     output = output + Environment.NewLine;
-                    output = output + "*";
-
+                    DrawBorder(ref output);
                     DrawSpaces(ref output, (userNum * 3) - 4);
+                    DrawBorder(ref output);
 
                     //modify values to get ready for drawing next rows
-                    output = output + "*";
                     row++;
                     spacesBefore = 1;
                 }
 
-                //affects rows succeeding center of hexagon, but not the last row
+                //affects rows succeeding center of hexagon, but NOT the last row
                 else if (row < (3 * userNum) - 3)
                 {
                     if (row == (2 * userNum) - 1)
@@ -98,12 +96,9 @@ namespace temp
                     output = output + Environment.NewLine;
                     
                     DrawSpaces(ref output, spacesBefore);
-
-                    output = output + "*";
-
+                    DrawBorder(ref output);
                     DrawSpaces(ref output, spacesInside);
-
-                    output = output + "*";
+                    DrawBorder(ref output);
 
                     //modify values to get ready for drawing next rows
                     spacesBefore++;
@@ -125,6 +120,10 @@ namespace temp
             }
         }
 
+        //
+        // BEGIN METHODS
+        //
+        //methods pass output string by reference because we are updating the original value
         private void DrawSpaces(ref string output, int outerOrInner)
         {
             spacesDrawn = 0;
@@ -142,9 +141,15 @@ namespace temp
             starsToDraw = userNum;
             while (starsDrawn < starsToDraw)
             {
-                output = output + "*";
+                //calls the other method
+                DrawBorder(ref output);
                 starsDrawn++;
             }
+        }
+
+        private void DrawBorder(ref string output)
+        {
+            output = output + "*";
         }
     }
 }
