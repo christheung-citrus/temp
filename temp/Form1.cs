@@ -43,15 +43,19 @@ namespace temp
 
             while (row < rowsToDraw)
             {
+                //affects first row
                 if (row == 0)
                 {
                     DrawSpaces(ref output, spacesBefore);
                     DrawStars(ref output);
 
+                    //modify values to get ready for drawing next rows
                     spacesBefore--;
                     spacesInside = userNum;
                     row++;
                 }
+                
+                //affects rows immediately precedeing center of hexagon, but not the first row
                 else if (row < userNum - 1)
                 {
                     output = output + Environment.NewLine;
@@ -62,26 +66,29 @@ namespace temp
 
                     DrawSpaces(ref output, spacesInside);
 
+                    //modify values to get ready for drawing next rows
                     output = output + "*";
                     spacesBefore--;
                     spacesInside += 2;
                     row++;
                 }
+
+                //affects center of hexagon (rectangular portion)
                 else if (row < (2 * userNum) - 1)
                 {
                     output = output + Environment.NewLine;
-
                     output = output + "*";
 
                     spacesInside = (userNum * 3) - 4;
-
                     DrawSpaces(ref output, spacesInside);
 
-
+                    //modify values to get ready for drawing next rows
                     output = output + "*";
                     row++;
                     spacesBefore = 1;
                 }
+
+                //affects rows succeeding center of hexagon, but not the last row
                 else if (row < (3 * userNum) - 3)
                 {
                     if (row == (2 * userNum) - 1)
@@ -98,15 +105,19 @@ namespace temp
                     DrawSpaces(ref output, spacesInside);
 
                     output = output + "*";
+
+                    //modify values to get ready for drawing next rows
                     spacesBefore++;
                     spacesInside -= 2;
                     row++;
                 }
+
+                //affects last row
                 else
                 {
                     output = output + Environment.NewLine;
-                    spacesBefore = userNum - 1;
                     
+                    spacesBefore = userNum - 1;
                     DrawSpaces(ref output, spacesBefore);
                     DrawStars(ref output);
 
