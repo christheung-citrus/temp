@@ -79,8 +79,7 @@ namespace temp
                     output = output + Environment.NewLine;
                     output = output + "*";
 
-                    spacesInside = (userNum * 3) - 4;
-                    DrawSpaces(ref output, spacesInside);
+                    DrawSpaces(ref output, (userNum * 3) - 4);
 
                     //modify values to get ready for drawing next rows
                     output = output + "*";
@@ -117,8 +116,7 @@ namespace temp
                 {
                     output = output + Environment.NewLine;
                     
-                    spacesBefore = userNum - 1;
-                    DrawSpaces(ref output, spacesBefore);
+                    DrawSpaces(ref output, userNum - 1);
                     DrawStars(ref output);
 
                     row++;
