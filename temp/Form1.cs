@@ -23,6 +23,9 @@ namespace temp
         int spacesToDraw, spacesBefore, spacesInside, spacesDrawn, starsDrawn;
         int row;
 
+        //
+        //BEGIN MAIN CODE
+        //
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             //get user input
@@ -60,7 +63,7 @@ namespace temp
                 //affects rows immediately precedeing center of hexagon, but NOT the first row
                 else if (row < userNum - 1)
                 {
-                    output = output + Environment.NewLine;
+                    DrawNewLine(ref output);
                     DrawSpaces(ref output, spacesBefore);
                     DrawBorder(ref output);
                     DrawSpaces(ref output, spacesInside);
@@ -73,9 +76,11 @@ namespace temp
                 }
 
                 //affects center of hexagon (rectangular portion)
+                //wrriten as a mathematical expression, if n = userNum
+                //rows userNum thru userNum + userNum
                 else if (row < (2 * userNum) - 1)
                 {
-                    output = output + Environment.NewLine;
+                    DrawNewLine(ref output);
                     DrawBorder(ref output);
                     DrawSpaces(ref output, (userNum * 3) - 4);
                     DrawBorder(ref output);
@@ -93,8 +98,7 @@ namespace temp
                         spacesInside = (userNum * 3) - 6;
                     }
 
-                    output = output + Environment.NewLine;
-                    
+                    DrawNewLine(ref output);
                     DrawSpaces(ref output, spacesBefore);
                     DrawBorder(ref output);
                     DrawSpaces(ref output, spacesInside);
@@ -109,8 +113,7 @@ namespace temp
                 //affects last row
                 else
                 {
-                    output = output + Environment.NewLine;
-                    
+                    DrawNewLine(ref output);
                     DrawSpaces(ref output, userNum - 1);
                     DrawStars(ref output);
 
@@ -150,6 +153,11 @@ namespace temp
         private void DrawBorder(ref string output)
         {
             output = output + "*";
+        }
+
+        private void DrawNewLine(ref string output)
+        {
+            output = output + Environment.NewLine;
         }
     }
 }
