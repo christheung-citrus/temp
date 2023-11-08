@@ -23,11 +23,8 @@ namespace temp
         int spacesToDraw, spacesBefore, spacesInside, spacesDrawn, starsDrawn;
         int row;
 
-        //a hexagon is a reduced square, and as such will be the same dimensions vertically and horizontally
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
-
             //get user input
             userNum = Convert.ToInt32(txtInput.Text);
 
@@ -48,13 +45,7 @@ namespace temp
             {
                 if (row == 0)
                 {
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesBefore;
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    DrawSpaces(ref output);
 
                     starsDrawn = 0;
                     starsToDraw = userNum;
@@ -72,15 +63,10 @@ namespace temp
                 {
                     output = output + Environment.NewLine;
 
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesBefore;
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    DrawSpaces(ref output);
 
                     output = output + "*";
+
                     spacesDrawn = 0;
                     spacesToDraw = spacesInside;
                     while (spacesDrawn < spacesToDraw)
@@ -121,16 +107,11 @@ namespace temp
                     }
 
                     output = output + Environment.NewLine;
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesBefore;
-
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    
+                    DrawSpaces(ref output);
 
                     output = output + "*";
+
                     spacesDrawn = 0;
                     spacesToDraw = spacesInside;
 
@@ -149,14 +130,8 @@ namespace temp
                 {
                     output = output + Environment.NewLine;
                     spacesBefore = userNum - 1;
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesBefore;
-
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    
+                    DrawSpaces(ref output);
 
                     starsDrawn = 0;
                     starsToDraw = userNum;
@@ -173,6 +148,17 @@ namespace temp
             }
 
 
+        }
+
+        private void DrawSpaces(ref string output)
+        {
+            spacesDrawn = 0;
+            spacesToDraw = spacesBefore;
+            while (spacesDrawn < spacesToDraw)
+            {
+                output = output + " ";
+                spacesDrawn++;
+            }
         }
     }
 }
