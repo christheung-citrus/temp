@@ -46,14 +46,7 @@ namespace temp
                 if (row == 0)
                 {
                     DrawSpaces(ref output);
-
-                    starsDrawn = 0;
-                    starsToDraw = userNum;
-                    while (starsDrawn < starsToDraw)
-                    {
-                        output = output + "*";
-                        starsDrawn++;
-                    }
+                    DrawStars(ref output);
 
                     spacesBefore--;
                     spacesInside = userNum;
@@ -132,15 +125,7 @@ namespace temp
                     spacesBefore = userNum - 1;
                     
                     DrawSpaces(ref output);
-
-                    starsDrawn = 0;
-                    starsToDraw = userNum;
-
-                    while (starsDrawn < starsToDraw)
-                    {
-                        output = output + "*";
-                        starsDrawn++;
-                    }
+                    DrawStars(ref output);
 
                     row++;
                 }
@@ -158,6 +143,17 @@ namespace temp
             {
                 output = output + " ";
                 spacesDrawn++;
+            }
+        }
+
+        private void DrawStars(ref string output)
+        {
+            starsDrawn = 0;
+            starsToDraw = userNum;
+            while (starsDrawn < starsToDraw)
+            {
+                output = output + "*";
+                starsDrawn++;
             }
         }
     }
