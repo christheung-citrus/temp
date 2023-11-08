@@ -60,13 +60,7 @@ namespace temp
 
                     output = output + "*";
 
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesInside;
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    DrawSpaces(ref output, spacesInside);
 
                     output = output + "*";
                     spacesBefore--;
@@ -78,15 +72,11 @@ namespace temp
                     output = output + Environment.NewLine;
 
                     output = output + "*";
-                    spacesDrawn = 0;
-                    spacesInside = (userNum * 3) - 4;
-                    spacesToDraw = spacesInside;
 
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    spacesInside = (userNum * 3) - 4;
+
+                    DrawSpaces(ref output, spacesInside);
+
 
                     output = output + "*";
                     row++;
@@ -105,13 +95,7 @@ namespace temp
 
                     output = output + "*";
 
-                    spacesDrawn = 0;
-                    spacesToDraw = spacesInside;
-                    while (spacesDrawn < spacesToDraw)
-                    {
-                        output = output + " ";
-                        spacesDrawn++;
-                    }
+                    DrawSpaces(ref output, spacesInside);
 
                     output = output + "*";
                     spacesBefore++;
@@ -130,8 +114,6 @@ namespace temp
                 }
                 lblResult.Text = output;
             }
-
-
         }
 
         private void DrawSpaces(ref string output, int outerOrInner)
